@@ -17,10 +17,10 @@
     <table class="table" id="clientTable">
         <thead>
             <tr>
-                <th><input class="form-control" type="text" id="searchInput0" @onkeyup="@(method => FilterTable(0))" placeholder="Search for client ID.."></th>
-                <th><input class="form-control" type="text" id="searchInput1" @onkeyup="@(method => FilterTable(1))" placeholder="Search for client names.."></th>
-                <th><input class="form-control" type="text" id="searchInput2" @onkeyup="@(method => FilterTable(2))" placeholder="Search for country code.."></th>
-                <th><input class="form-control" type="text" id="searchInput3" @onkeyup="@(method => FilterTable(3))" placeholder="Search for address.."></th>
+                <th><input class="form-control" type="text" id="searchInput0" @onkeyup="@(method => FilterTable())" placeholder="Search for client ID.."></th>
+                <th><input class="form-control" type="text" id="searchInput1" @onkeyup="@(method => FilterTable())" placeholder="Search for client names.."></th>
+                <th><input class="form-control" type="text" id="searchInput2" @onkeyup="@(method => FilterTable())" placeholder="Search for country code.."></th>
+                <th><input class="form-control" type="text" id="searchInput3" @onkeyup="@(method => FilterTable())" placeholder="Search for address.."></th>
             </tr>
         </thead>
         <thead class="table-light">
@@ -53,9 +53,9 @@
         clients = await Http.GetFromJsonAsync<Client[]>("data/clientData.txt");
     }    
 
-    private void FilterTable(int column)
+    private void FilterTable()
     {
         Console.WriteLine("testt");
-        JS.InvokeVoidAsync("TableFilter", column);
+        JS.InvokeVoidAsync("TableFilter");
     }
 }
