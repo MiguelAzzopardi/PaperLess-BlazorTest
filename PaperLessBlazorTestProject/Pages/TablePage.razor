@@ -1,19 +1,29 @@
-﻿@page "/clients"
+﻿@page "/"
 @inject HttpClient Http
+@inject IJSRuntime JS
+
 @using PaperLessBlazorTestProject.Classes;
 
 <PageTitle>Txt File Reader</PageTitle>
 
-<h1>Txt to JSON</h1>
+<h1 class="title" id="customTitle">Text File Reader</h1>
 
-<p>This component demonstrates fetching a json from a text file and displaying it as a table.</p>
+<p>This page demonstrates fetching a JSON from a text file and displaying it as a table.</p>
 
 @if(clients == null){
     //clients variable is still null, async is probably not complete
     <p>Loading file...</p>
 }else{
-    <table class="table">
+    <table class="table" id="clientTable">
         <thead>
+            <tr>
+                <th><input class="form-control" type="text" id="searchInput0" @onkeyup="@(method => FilterTable(0))" placeholder="Search for client ID.."></th>
+                <th><input class="form-control" type="text" id="searchInput1" @onkeyup="@(method => FilterTable(1))" placeholder="Search for client names.."></th>
+                <th><input class="form-control" type="text" id="searchInput2" @onkeyup="@(method => FilterTable(2))" placeholder="Search for country code.."></th>
+                <th><input class="form-control" type="text" id="searchInput3" @onkeyup="@(method => FilterTable(3))" placeholder="Search for address.."></th>
+            </tr>
+        </thead>
+        <thead class="table-light">
             <tr>
                 <th>ClientNo.</th>
                 <th>Name</th>
@@ -41,5 +51,11 @@
     {
         Console.WriteLine("Reading clients");
         clients = await Http.GetFromJsonAsync<Client[]>("data/clientData.txt");
+    }    
+
+    private void FilterTable(int column)
+    {
+        Console.WriteLine("testt");
+        JS.InvokeVoidAsync("TableFilter", column);
     }
 }
