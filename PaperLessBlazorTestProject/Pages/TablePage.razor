@@ -1,0 +1,45 @@
+﻿@page "/clients"
+@inject HttpClient Http
+@using PaperLessBlazorTestProject.Classes;
+
+<PageTitle>Txt File Reader</PageTitle>
+
+<h1>Txt to JSON</h1>
+
+<p>This component demonstrates fetching a json from a text file and displaying it as a table.</p>
+
+@if(clients == null){
+    //clients variable is still null, async is probably not complete
+    <p>Loading file...</p>
+}else{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ClientNo.</th>
+                <th>Name</th>
+                <th>Country Code</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var client in clients){
+                <tr>
+                    <td>@client.clientNo</td>
+                    <td>@client.clientName</td>
+                    <td>@client.countryCode</td>
+                    <td>@client.address</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    Client[]? clients;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Console.WriteLine("Reading clients");
+        clients = await Http.GetFromJsonAsync<Client[]>("data/clientData.txt");
+    }
+}

@@ -1,0 +1,38 @@
+﻿[
+    {
+        "clientNo": 1,
+        "clientName": "Bailey Inc",
+        "countryCode": "GB",
+        "address": "Sutton, 12 Mounthoolie Lane"
+    },
+    {
+        "clientNo": 2,
+        "clientName": "Harris LCC",
+        "countryCode": "NL",
+        "address": "Naaldwijk, Zuidhoffstraat 76"
+    },
+    {
+        "clientNo": 3,
+        "clientName": "Stamm Group",
+        "countryCode": "GB",
+        "address": "Dechmont, 77 Ings Lane"
+    },
+    {
+        "clientNo": 4,
+        "clientName": "Harris LCC",
+        "countryCode": "GB",
+        "address": "Ludchurch, 91 Wern Ddu Lane"
+    },
+    {
+        "clientNo": 5,
+        "clientName": "Harris LCC",
+        "countryCode": "SE",
+        "address": "Ljusdal, Morvall Färilavägen 66"
+    },
+    {
+        "clientNo": 6,
+        "clientName": "Harris LCC",
+        "countryCode": "NO",
+        "address": "Oslo,  Tverrvedveien 126"
+    }
+]
